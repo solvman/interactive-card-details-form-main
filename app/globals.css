@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-site-1: 278, 68%, 11%; /* Very dark violet */
+  --color-site-1-c: 0, 0%, 100%; /* White */
+  --color-site-2-1: 270, 3%, 87%; /* Light grayish violet */
+  --color-site-2-2: 279, 6%, 55%; /* Dark grayish violet */
+  --color-error: 0, 100%, 66%; /* Red */
+  --bg-site-gradient-from: hsl(249, 99%, 64%);
+  --bg-site-gradient-to: hsl(278, 94%, 30%);
+}
