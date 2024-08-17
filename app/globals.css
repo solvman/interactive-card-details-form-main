@@ -11,3 +11,15 @@
   --bg-site-gradient-from: hsl(249, 99%, 64%);
   --bg-site-gradient-to: hsl(278, 94%, 30%);
 }
+
+@layer base {
+  .wrapper {
+    @apply px-4;
+  }
+}
+
+@layer components {
+  .card {
+    @apply h-[157px] w-[286px] bg-cover bg-no-repeat;
+  }
+}
