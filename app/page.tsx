@@ -27,32 +27,67 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="relative pt-1">
+      <section className="relative pb-11 pt-1">
         <div className="wrapper">
           <form>
-            <label htmlFor="name">
-              <span className="block">Cardholder name</span>
-              <input type="text" id="name" className="w-full" />
-            </label>
-            <label htmlFor="card-number">
-              <span className="block">Card number</span>
-              <input type="text" id="card-number" className="w-full" />
-            </label>
-            <div className="flex flex-row">
-              <div className="flex w-1/2 flex-row flex-wrap">
-                <label htmlFor="exp-month" className="basis-full">
-                  <span>Exp. date (MM/YY)</span>
+            <div className="flex flex-col gap-5">
+              <div>
+                <label htmlFor="name" className="label">
+                  <span className="block">Cardholder name</span>{" "}
                 </label>
-                <input type="text" id="exp-month" className="w-1/2" />
-                <input type="text" id="exp-year" className="w-1/2" />
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full"
+                  placeholder="e.g. Jane Appleseed"
+                />
               </div>
-
-              <div className="flex w-1/2 flex-col">
-                <label htmlFor="cvv">
-                  <span>CVV</span>
+              <div>
+                <label htmlFor="card-number" className="label">
+                  <span className="block">Card number</span>
                 </label>
-                <input type="text" id="cvv" className="w-full" />
+                <input
+                  type="text"
+                  id="card-number"
+                  className="w-full"
+                  placeholder="e.g. 1234 5678 9123 000"
+                />
               </div>
+              <div className="flex flex-row gap-3">
+                <div className="flex w-1/2 flex-col">
+                  <label htmlFor="exp-month" className="label basis-full">
+                    <span>Exp. date (MM/YY)</span>
+                  </label>
+                  <div className="flex flex-row gap-1">
+                    <input
+                      type="text"
+                      id="exp-month"
+                      className="w-full"
+                      placeholder="MM"
+                    />
+                    <input
+                      type="text"
+                      id="exp-year"
+                      className="w-full"
+                      placeholder="YY"
+                    />
+                  </div>
+                </div>
+                <div className="flex w-1/2 flex-col">
+                  <label htmlFor="cvv" className="label">
+                    <span>CVV</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="cvv"
+                    className="w-full"
+                    placeholder="e.g. 123"
+                  />
+                </div>
+              </div>
+              <button type="submit" className="btn-primary">
+                Submit
+              </button>
             </div>
           </form>
         </div>
