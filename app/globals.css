@@ -14,7 +14,7 @@
 
 @layer base {
   input[type="text"] {
-    @apply block rounded-lg border border-secondary-100 px-4 py-3 text-lg font-medium text-primary placeholder:opacity-25;
+    @apply block rounded-lg border-2 border-secondary-100 px-4 py-3 text-lg font-medium text-primary placeholder:opacity-25 hover:border-transparent focus:border-transparent focus:outline-none focus:ring-0 focus:ring-transparent active:border-transparent active:ring-0 active:ring-transparent;
   }
 
   .wrapper {

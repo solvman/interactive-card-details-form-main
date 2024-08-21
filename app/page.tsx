@@ -7,11 +7,11 @@ export default function Home() {
       <section className="mb-20 h-[240px] bg-mobile bg-cover bg-no-repeat pt-8">
         <div className="wrapper">
           <div className="card relative ml-auto bg-card-back">
-            <p className="text-inverted absolute right-10 top-1/2 -translate-y-1/2 text-[0.5625rem]">
+            <p className="absolute right-10 top-1/2 -translate-y-1/2 text-[0.5625rem] text-inverted">
               000
             </p>
           </div>
-          <div className="card text-inverted relative -top-16 bg-card-front p-5 shadow-2xl">
+          <div className="card relative -top-16 bg-card-front p-5 text-inverted shadow-2xl">
             <Image
               height={30}
               width={54}
@@ -35,12 +35,14 @@ export default function Home() {
                 <label htmlFor="name" className="label">
                   <span className="block">Cardholder name</span>{" "}
                 </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full"
-                  placeholder="e.g. Jane Appleseed"
-                />
+                <div className="rounded-lg bg-gradient-1">
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full"
+                    placeholder="e.g. Jane Appleseed"
+                  />
+                </div>
               </div>
               <div>
                 <label htmlFor="card-number" className="label">
