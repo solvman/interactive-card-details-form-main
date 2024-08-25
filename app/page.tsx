@@ -6,6 +6,7 @@ import Image from "next/image";
 
 import imageCardLogo from "@/public/images/card-logo.svg";
 import TextInput from "@/components/TextInput";
+import { formatToCardNumber } from "@/utils/utils";
 
 type formDataType = {
   cardNumber: string;
@@ -15,7 +16,7 @@ type formDataType = {
 };
 
 export default function Home() {
-  const { register, handleSubmit } = useForm<formDataType>({
+  const { register, handleSubmit, control } = useForm<formDataType>({
     defaultValues: {
       cardNumber: "",
       name: "",
@@ -80,10 +81,23 @@ export default function Home() {
                 <label htmlFor="card-number" className="label">
                   <span className="block">Card number</span>
                 </label>
-                <TextInput
-                  type="text"
-                  id="card-number"
-                  placeholder="e.g. 1234 5678 9123 000"
+                <Controller
+                  control={control}
+                  name="cardNumber"
+                  render={function ({ field: { onChange, value, ref } }) {
+                    return (
+                      <TextInput
+                        ref={ref}
+                        type="text"
+                        id="card-number"
+                        value={value}
+                        onChange={(event) =>
+                          onChange(formatToCardNumber(event.target.value))
+                        }
+                        placeholder="e.g. 1234 5678 9876 5432"
+                      />
+                    );
+                  }}
                 />
               </div>
               <div className="flex flex-row gap-3">
