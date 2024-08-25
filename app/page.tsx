@@ -6,22 +6,31 @@ import Image from "next/image";
 
 import imageCardLogo from "@/public/images/card-logo.svg";
 import TextInput from "@/components/TextInput";
-import { formatToCardNumber } from "@/utils/utils";
+import { formatToCardNumber, formatToCVV } from "@/utils/utils";
+
+const ERROR_REQUIRED = "Can't be empty";
 
 type formDataType = {
-  cardNumber: string;
   name: string;
+  cardNumber: string;
   expMonth: string;
   expYear: string;
+  cvv: string;
 };
 
 export default function Home() {
-  const { register, handleSubmit, control } = useForm<formDataType>({
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<formDataType>({
     defaultValues: {
-      cardNumber: "",
       name: "",
+      cardNumber: "",
       expMonth: "",
       expYear: "",
+      cvv: "",
     },
   });
 
@@ -75,6 +84,7 @@ export default function Home() {
                   type="text"
                   id="name"
                   placeholder="e.g. Jane Appleseed"
+                  {...register("name", { required: ERROR_REQUIRED })}
                 />
               </div>
               <div>
@@ -84,7 +94,10 @@ export default function Home() {
                 <Controller
                   control={control}
                   name="cardNumber"
-                  rules={{ required: true, minLength: 19, maxLength: 19 }}
+                  rules={{
+                    required: ERROR_REQUIRED,
+                    minLength: { value: 19, message: "Must be valid number" },
+                  }}
                   render={({ field: { onChange, value, ref } }) => {
                     return (
                       <TextInput
@@ -107,15 +120,53 @@ export default function Home() {
                     <span>Exp. date (MM/YY)</span>
                   </label>
                   <div className="flex flex-row gap-1">
-                    <TextInput type="text" id="exp-month" placeholder="MM" />
-                    <TextInput type="text" id="exp-year" placeholder="YY" />
+                    <TextInput
+                      type="number"
+                      id="exp-month"
+                      placeholder="MM"
+                      {...register("expMonth", {
+                        required: ERROR_REQUIRED,
+                        min: { value: 1, message: "Not valid month" },
+                        max: { value: 12, message: "Not valid month" },
+                      })}
+                    />
+                    <TextInput
+                      type="number"
+                      id="exp-year"
+                      placeholder="YY"
+                      {...register("expYear", {
+                        required: ERROR_REQUIRED,
+                        min: { value: 24, message: "Not valid year" },
+                      })}
+                    />
                   </div>
                 </div>
                 <div className="flex w-1/2 flex-col">
                   <label htmlFor="cvv" className="label">
                     <span>CVV</span>
                   </label>
-                  <TextInput type="text" id="cvv" placeholder="e.g. 123" />
+                  <Controller
+                    control={control}
+                    name="cvv"
+                    rules={{
+                      required: ERROR_REQUIRED,
+                      minLength: { value: 3, message: "Must be valid number" },
+                    }}
+                    render={({ field: { value, onChange, ref } }) => {
+                      return (
+                        <TextInput
+                          ref={ref}
+                          type="text"
+                          id="cvv"
+                          value={value}
+                          onChange={(event) => {
+                            onChange(formatToCVV(event.target.value));
+                          }}
+                          placeholder="e.g. 123"
+                        />
+                      );
+                    }}
+                  />
                 </div>
               </div>
               <button type="submit" className="btn-primary">

@@ -13,7 +13,8 @@
 }
 
 @layer base {
-  input[type="text"] {
+  input[type="text"],
+  input[type="number"] {
     @apply rounded-lg border border-secondary-100 bg-clip-padding px-4 py-3 text-lg font-medium text-primary placeholder:opacity-25 hover:border-transparent focus:border-transparent focus:outline-none focus:ring-0 focus-visible:border-transparent;
   }
 
