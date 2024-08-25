@@ -1,16 +1,37 @@
 "use client";
 
 import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import Image from "next/image";
 
 import imageCardLogo from "@/public/images/card-logo.svg";
 import TextInput from "@/components/TextInput";
 
+type formDataType = {
+  cardNumber: string;
+  name: string;
+  expMonth: string;
+  expYear: string;
+};
+
 export default function Home() {
+  const { register, handleSubmit } = useForm<formDataType>({
+    defaultValues: {
+      cardNumber: "",
+      name: "",
+      expMonth: "",
+      expYear: "",
+    },
+  });
+
   const [cardNumber, setCardNumber] = useState("0000 0000 0000 0000");
   const [name, setName] = useState("Jane Appleseed");
   const [expMonth, setExpMonth] = useState("00");
   const [expYear, setExpYear] = useState("00");
+
+  function onSubmit(data: formDataType) {
+    console.log(data);
+  }
 
   return (
     <main className="lg:flex lg:h-screen lg:min-h-[547px] lg:flex-row lg:gap-32">
@@ -43,7 +64,7 @@ export default function Home() {
       </section>
       <section className="relative pb-11 pt-1 lg:h-full lg:w-1/2 lg:p-0">
         <div className="wrapper lg:mx-0 lg:flex lg:h-full lg:max-w-[381px] lg:flex-col lg:items-start lg:justify-center lg:px-0">
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-5 lg:gap-[26px]">
               <div>
                 <label htmlFor="name" className="label">
