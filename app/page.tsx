@@ -84,7 +84,8 @@ export default function Home() {
                 <Controller
                   control={control}
                   name="cardNumber"
-                  render={function ({ field: { onChange, value, ref } }) {
+                  rules={{ required: true, minLength: 19, maxLength: 19 }}
+                  render={({ field: { onChange, value, ref } }) => {
                     return (
                       <TextInput
                         ref={ref}
