@@ -32,7 +32,7 @@ const config: Config = {
           100: "hsla(var(--color-site-2-1))",
           200: "hsla(var(--color-site-2-2))",
         },
-        error: "hsla(var(--color-site-error))",
+        error: "hsla(var(--color-error))",
       },
     },
   },
