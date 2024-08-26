@@ -26,7 +26,7 @@ type SubmitProviderType = {
   children: React.ReactNode;
 };
 
-function SubmitProvider({ children }: SubmitProviderType) {
+export function SubmitProvider({ children }: SubmitProviderType) {
   return (
     <SubmitContext.Provider value={useSubmit()}>
       {children}
@@ -34,4 +34,4 @@ function SubmitProvider({ children }: SubmitProviderType) {
   );
 }
 
-export default SubmitProvider;
+export default SubmitContext;

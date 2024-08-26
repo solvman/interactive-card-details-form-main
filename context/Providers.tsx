@@ -1,6 +1,6 @@
 "use client";
 
-import SubmitProvider from "./SubmitProvider";
+import { SubmitProvider } from "./SubmitProvider";
 
 type ProvidersType = {
   children: React.ReactNode;
