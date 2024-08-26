@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm, Controller, set } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import Image from "next/image";
 
 import imageCardLogo from "@/public/images/card-logo.svg";
