@@ -73,7 +73,7 @@ export default function Home() {
             <div className="flex flex-row text-[0.5625rem] lg:text-sm lg:tracking-[2px]">
               <p className="uppercase">{cardData.name}</p>
               <p className="ml-auto">
-                {cardData.expMonth}/{cardData.expYear}
+                {cardData.expMonth.padStart(2, "0")}/{cardData.expYear}
               </p>
             </div>
           </div>
@@ -168,6 +168,7 @@ export default function Home() {
                         {...register("expYear", {
                           required: ERROR_REQUIRED,
                           min: { value: 24, message: "Not valid year" },
+                          max: { value: 99, message: "Not valid year" },
                         })}
                         error={errors.expYear?.message}
                       />
@@ -184,7 +185,7 @@ export default function Home() {
                         required: ERROR_REQUIRED,
                         minLength: {
                           value: 3,
-                          message: "Must be valid number",
+                          message: "Must be valid CVV",
                         },
                       }}
                       render={({ field: { value, onChange, ref } }) => {
