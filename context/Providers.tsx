@@ -1,5 +1,6 @@
 "use client";
 
+import { CardDetailProvider } from "./CardDetailProvider";
 import { SubmitProvider } from "./SubmitProvider";
 
 type ProvidersType = {
@@ -7,7 +8,11 @@ type ProvidersType = {
 };
 
 function Providers({ children }: ProvidersType) {
-  return <SubmitProvider>{children}</SubmitProvider>;
+  return (
+    <CardDetailProvider>
+      <SubmitProvider>{children}</SubmitProvider>
+    </CardDetailProvider>
+  );
 }
 
 export default Providers;

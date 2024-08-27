@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import SubmitContext from "@/context/SubmitProvider";
 
-function useSubmitted() {
+function useSubmit() {
   return useContext(SubmitContext);
 }
 
-export default useSubmitted;
+export default useSubmit;
